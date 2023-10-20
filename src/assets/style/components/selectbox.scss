@@ -1,0 +1,209 @@
+$itemHeight: 37px;
+
+.ga-select-box {
+  position: relative;
+  font-size: 1em;
+  display: inline-flex;
+  width: 14em;
+  //border: 1px solid $borderColor;
+  .selected-item {
+    border: 1px solid $borderColor;
+    border-radius: $baseBorderRadius;
+    position: relative;
+    display: flex;
+    padding: $inputPadding;
+    line-height: $inputLineHeight;
+    vertical-align: baseline;
+    background-color: var(--bgc);
+    flex-grow: 1;
+    .item-icon {
+      margin-right: 10px;
+    }
+    .select-icon {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      padding: $verticalInputPadding;
+      color: #D4D4D4;
+      transform: translateY(-50%);
+    }
+  }
+  &.open {
+    .select-menu {
+      display: inline-block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    select, .selected-item {
+      border-color: $primary;
+    }
+  }
+  .select-menu {
+    position: absolute;
+    background-color: var(--bgc);
+    z-index: 999;
+    border: 1px solid var(--brd);
+    border-radius: $baseBorderRadius;
+    .option-item.selected {
+      span.check-icon {
+        position: absolute;
+        top:0;
+        right: 0;
+        padding: 10px;
+        color: #2985DB;
+      }
+    }
+    .option-item.icon {
+      display: block;
+      i {
+        font-size: .9em;
+        margin-right: 10px;
+      }
+    }
+    &.selected {
+      &-text {
+        .option-item.selected {
+          color: $primary;
+          font-weight: 900;
+        }
+      }
+      &-bg {
+        .option-item.selected {
+          background-color: var(--suf1) !important;
+        }
+      }
+      &-icon {
+        .option-item.selected {
+          background-color: var(--bgc);
+        }
+      }
+    }
+  }
+  &.spinner {
+    min-width: 12em;
+    .selected-item {
+      border-radius: 0;
+    }
+    .spinner-control {
+      padding: $inputVerticalOffsetPadding $verticalInputPadding;
+      line-height: $inputLineHeight;
+      &.left {
+        order: -1;
+        border: 1px solid #d6d6d6;
+        margin-right: -1px;
+        border-top-left-radius: $baseBorderRadius;
+        border-bottom-left-radius: $baseBorderRadius;
+      }
+      &.right {
+        border: 1px solid #d6d6d6;
+        margin-left: -1px;
+        border-top-right-radius: $baseBorderRadius;
+        border-bottom-right-radius: $baseBorderRadius;
+      }
+    }
+    &.right {
+      .selected-item {
+        border-radius: 0;
+        border-top-left-radius: $baseBorderRadius;
+        border-bottom-left-radius: $baseBorderRadius;
+      }
+      .spinner-control {
+        border-radius: 0;
+      }
+      .spinner-control.left {
+        order: 1;
+        border: 1px solid #d6d6d6;
+        margin-left: -1px;
+        border-top-right-radius: $baseBorderRadius;
+        border-bottom-right-radius: $baseBorderRadius;
+      }
+    }
+  }
+  &.dropdown {
+    .select-menu {
+      top: 100%;
+      left: 0;
+      width: 100%;
+      box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.16);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      transform-origin: top;
+      .option-item {
+        max-height: $itemHeight;
+        cursor: pointer;
+      }
+    }
+    &.open {
+      .selected-item {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .select-menu{
+        display: inline-block;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.16);
+      }
+    }
+  }
+  &.float {
+    .select-menu {
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform-origin: top;
+      .option-item {
+        cursor: pointer;
+      }
+    }
+    &.open .select-menu{
+      display: inline-block;
+      box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.16);
+    }
+  }
+  &.fluid {
+    width: 100%;
+  }
+  &.compact {
+    .selected-item,
+    .select-icon {
+      padding: $compactPadding;
+    }
+  }
+  select {
+    font-size: 1em;
+    width: 100%;
+    background: var(--bgc);
+    border: 1px solid var(--brd);
+    border-radius: $baseInputRadius;
+    padding: $inputPadding;
+    padding-right: 2.25em;
+    appearance: none;
+    outline: 0;
+    line-height: $inputLineHeight;
+    //opacity: 0.5;
+    option {
+      font-size: 1rem;
+      //position: absolute;
+      //appearance: none;
+    }
+    &:hover {
+      border-color: #c0c4cc;
+    }
+  }
+  i.icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: $verticalPadding;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+  &.compact {
+    select {
+      padding: $compactPadding;
+    }
+    i {
+      padding: $verticalPadding;
+    }
+  }
+}
+
